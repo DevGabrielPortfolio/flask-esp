@@ -10,6 +10,7 @@
     <p>Status do LED: <strong>{{ led_status }}</strong></p>
     <p>Status do Servo: <strong>{{ servo_status }}</strong></p>
 
+    <h2>Controle do LED</h2>
     <form action="/set_led_on" method="get">
         <button type="submit" style="padding: 10px 20px; font-size: 18px;">Ligar LED</button>
     </form>
@@ -18,6 +19,7 @@
         <button type="submit" style="padding: 10px 20px; font-size: 18px;">Desligar LED</button>
     </form>
 
+    <h2>Controle do Servo</h2>
     <form action="/set_servo_on" method="get" style="margin-top: 20px;">
         <button type="submit" style="padding: 10px 20px; font-size: 18px;">Ligar Luz (Servo)</button>
     </form>
