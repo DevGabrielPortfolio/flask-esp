@@ -2,12 +2,13 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Controle do LED - ESP32</title>
+    <title>Controle de LED e Servo - ESP32</title>
 </head>
 <body>
-    <h1>Controle de LED - ESP32</h1>
+    <h1>Controle de LED e Servo Motor - ESP32</h1>
 
-    <p>Status atual do LED: <strong>{{ led_status }}</strong></p>
+    <p>Status do LED: <strong>{{ led_status }}</strong></p>
+    <p>Status do Servo: <strong>{{ servo_status }}</strong></p>
 
     <form action="/set_led_on" method="get">
         <button type="submit" style="padding: 10px 20px; font-size: 18px;">Ligar LED</button>
@@ -15,6 +16,14 @@
 
     <form action="/set_led_off" method="get" style="margin-top: 20px;">
         <button type="submit" style="padding: 10px 20px; font-size: 18px;">Desligar LED</button>
+    </form>
+
+    <form action="/set_servo_on" method="get" style="margin-top: 20px;">
+        <button type="submit" style="padding: 10px 20px; font-size: 18px;">Ligar Luz (Servo)</button>
+    </form>
+
+    <form action="/set_servo_off" method="get" style="margin-top: 20px;">
+        <button type="submit" style="padding: 10px 20px; font-size: 18px;">Desligar Luz (Servo)</button>
     </form>
 </body>
 </html>
