@@ -1,34 +1,27 @@
-from flask import Flask, render_template, redirect, Response
-import requests
+from flask import Flask, jsonify, render_template, redirect
 
 app = Flask(__name__)
 
-# IP atual da ESP32
-ESP32_IP = "http://192.168.15.92"
+# Estado inicial do LED
+led_state = {'status': 'off'}
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', led_status=led_state['status'])
 
-@app.route('/led_on')
-def led_on():
-    try:
-        response = requests.get(f"{ESP32_IP}/led/on", timeout=2)
-        response.raise_for_status()
-        return redirect('/')
-    except requests.exceptions.RequestException as e:
-        print(f"Erro ao tentar ligar o LED: {e}")
-        return Response(f"Erro: {e}", status=500)
+@app.route('/set_led_on')
+def set_led_on():
+    led_state['status'] = 'on'
+    return redirect('/')
 
-@app.route('/led_off')
-def led_off():
-    try:
-        response = requests.get(f"{ESP32_IP}/led/off", timeout=2)
-        response.raise_for_status()
-        return redirect('/')
-    except requests.exceptions.RequestException as e:
-        print(f"Erro ao tentar desligar o LED: {e}")
-        return Response(f"Erro: {e}", status=500)
+@app.route('/set_led_off')
+def set_led_off():
+    led_state['status'] = 'off'
+    return redirect('/')
+
+@app.route('/get_led_state')
+def get_led_state():
+    return jsonify(led_state)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)

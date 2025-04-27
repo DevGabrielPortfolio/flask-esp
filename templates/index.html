@@ -7,11 +7,13 @@
 <body>
     <h1>Controle de LED - ESP32</h1>
 
-    <form action="/led_on" method="get">
+    <p>Status atual do LED: <strong>{{ led_status }}</strong></p>
+
+    <form action="/set_led_on" method="get">
         <button type="submit" style="padding: 10px 20px; font-size: 18px;">Ligar LED</button>
     </form>
 
-    <form action="/led_off" method="get" style="margin-top: 20px;">
+    <form action="/set_led_off" method="get" style="margin-top: 20px;">
         <button type="submit" style="padding: 10px 20px; font-size: 18px;">Desligar LED</button>
     </form>
 </body>
